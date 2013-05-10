@@ -1,0 +1,21 @@
+class Player {
+  	String name;
+		int potion;
+		int minp = 2;
+		int health;
+		int weapon;
+		int attack;
+		int armor;
+		int mina = 10;
+		int hit;
+		int min = 100;
+		int max = 300;
+				
+		
+		int attack(){
+			    hit = attack + (int) ((Math.random() * 60) + attack);
+				return hit;
+				}
+
+
+		}
