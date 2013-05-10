@@ -5,11 +5,10 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 class GameMethods {
-  int rphp;
+	int rphp;
 	int rmhp;
 	//int mar;
 	//int par;
-	int cure;
 
 	public static void wait (int n) {
 	    long t0,t1;
@@ -19,7 +18,7 @@ class GameMethods {
 	    }
 	    while (t1-t0<1000);
 	}
-	void Battle (Player player, Monster monster) throws IOException {
+	void Battle (Player player, Monster monster, Weapon1 weapon1, Weapon2 weapon2) throws IOException {
 		
 		BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
 		String readline;
@@ -28,11 +27,9 @@ class GameMethods {
 		while(end == false) {
 		
 			System.out.println(player.name + " Health: " + player.health + "       " + monster.name + " Health: " + monster.health);
-			//System.out.println(player.name + " Weapon: " + weapon.name + "       " + monster.name + " Weapon: " + weapon.name);
-			//System.out.println(player.name + " Attack: " + player.attack + "       " + monster.name + " Attack: " + monster.attack);
 			System.out.println(player.name + " Armor: "  + player.armor  + "       " + monster.name + " Armor: "  + monster.armor);
 			System.out.println(player.name + " Potion: " + player.potion + "       " + monster.name + " Potion: " + monster.potion);
-			attack(player.attack(), player.health, player.armor, monster.attack(), monster.health, monster.armor);
+			attack(weapon1.attack1(), player.health, player.armor, weapon2.attack2(), monster.health, monster.armor);
 
 			monster.health = getMhp();
 //			monster.armor = getMar();
@@ -54,18 +51,7 @@ class GameMethods {
 				readline = bufferRead.readLine();
 				
                if (readline.equals("no") || readline.equals("N") || readline.equals("No")) {
-					
-				     	switch (cure) {
-				        	case 0:
-					        	System.out.println("Potion" + player.potion);
-						        player.health = player.health + (int) (Math.random() * 100);
-						        player.potion--;
-						    break;
-					        
-				        	default:
-						        System.out.println("No potions to use ;( ");
-						    break;
-					}
+									     	
                }
 			}
 				
@@ -85,14 +71,20 @@ class GameMethods {
 		
 		Player player = new Player();
 		
-		player.attack = (int) (Math.random() * 100);
+  // 	 player.attack = (int) (Math.random() * 100);
 		
-		Monster monster = new Monster();
+ //      Monster monster = new Monster();
 		
-		monster.attack = (int) (Math.random() * 100);
+ //	     monster.attack = (int) (Math.random() * 100);
 		
-		patt = player.attack;
-		matt = monster.attack;
+		Weapon1 weapon1 = new Weapon1();
+		weapon1.attack1 = weapon1.damage1 + (int) (Math.random() * 100);
+		
+		Weapon2 weapon2 = new Weapon2();
+		weapon2.attack2 = weapon2.damage2 + (int) (Math.random() * 100);
+		
+		patt = weapon1.attack1;
+		matt = weapon2.attack2;
 		
 		par = player.armor;
 		mar = player.armor;
