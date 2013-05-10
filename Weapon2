@@ -1,0 +1,62 @@
+class Weapon2 {
+  
+	
+	String name;
+	int attack2;
+	int damage2;
+	int w2;
+	int hit2;
+	{
+	switch (w2) {
+	case 0:
+		//name = "Gloves";
+		damage2 = 2;
+		break;
+	case 1:
+		//name ="Dagger";
+		damage2 = 3;
+		break;
+	case 2:
+		//name = "Sword";
+		damage2 = 5;
+		break;
+	case 3:
+		//name = "Axe";
+		damage2 = 7;
+		break;
+	case 4:
+		//name = "Claymore";
+		damage2 = 11;
+		break;
+	case 5:
+		//name = "Spear";
+		damage2 = 13;
+		break;
+	case 6:
+		//name = "Crossbow";
+		damage2 = 17;
+		break;
+	case 7:
+		//name = "Sickle";
+		damage2 = 19;
+		break;
+	case 8:
+		//name = "Chainsaw";
+		damage2 = 23;
+		break;
+	case 9:
+		//name = "AK-47";
+		damage2 = 31;
+		break;
+	default:
+		System.out.println("Doesn't exist more weapon to use ;(");
+		break;
+	}
+		
+	}
+	int attack2(){
+	    hit2 = attack2 + (int) ((Math.random() * 60) + attack2);
+		return hit2;
+		}
+
+}
