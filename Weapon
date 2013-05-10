@@ -1,0 +1,53 @@
+public class Weapon {
+  String name;
+	int attack;
+	int w;
+	int hit;
+	{
+	switch (w) {
+	case 0:
+		name = "Gloves";
+		attack = 2;
+		break;
+	case 1:
+		name ="Dagger";
+		attack = 3;
+		break;
+	case 2:
+		name = "Sword";
+		attack = 5;
+		break;
+	case 3:
+		name = "Axe";
+		attack = 7;
+		break;
+	case 4:
+		name = "Claymore";
+		attack = 11;
+		break;
+	case 5:
+		name = "Spear";
+		attack = 13;
+		break;
+	case 6:
+		name = "Crossbow";
+		attack = 17;
+		break;
+	case 7:
+		name = "Sickle";
+		attack = 19;
+		break;
+	case 8:
+		name = "Chainsaw";
+		attack = 23;
+		break;
+	case 9:
+		name = "AK-47";
+		attack = 31;
+		break;
+	default:
+		System.out.println("Doesn't exist more weapon to use ;(");
+		break;
+}
+	}
+}
