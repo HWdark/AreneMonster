@@ -1,0 +1,133 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+class GameMethods {
+  int rphp;
+	int rmhp;
+	//int mar;
+	//int par;
+	int cure;
+
+	public static void wait (int n) {
+	    long t0,t1;
+	    t0=System.currentTimeMillis();
+	    do{
+	        t1=System.currentTimeMillis();
+	    }
+	    while (t1-t0<1000);
+	}
+	void Battle (Player player, Monster monster) throws IOException {
+		
+		BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
+		String readline;
+		
+		boolean end = false;
+		while(end == false) {
+		
+			System.out.println(player.name + " Health: " + player.health + "       " + monster.name + " Health: " + monster.health);
+			//System.out.println(player.name + " Weapon: " + weapon.name + "       " + monster.name + " Weapon: " + weapon.name);
+			//System.out.println(player.name + " Attack: " + player.attack + "       " + monster.name + " Attack: " + monster.attack);
+			System.out.println(player.name + " Armor: "  + player.armor  + "       " + monster.name + " Armor: "  + monster.armor);
+			System.out.println(player.name + " Potion: " + player.potion + "       " + monster.name + " Potion: " + monster.potion);
+			attack(player.attack(), player.health, player.armor, monster.attack(), monster.health, monster.armor);
+
+			monster.health = getMhp();
+//			monster.armor = getMar();
+			player.health = getPhp();
+//			player.armor = getPar();
+			
+			if (monster.attack <= player.armor || player.attack <= monster.armor){
+				monster.health = getMhp();
+				player.health = getPhp();
+				System.out.println("Miss!");
+			}
+			else{
+			    monster.health  = monster.health - (monster.armor - player.attack);
+				player.health  = player.health - (player.armor - monster.attack);
+				System.out.println(player.name + "Health: " + player.health + "       " +  monster.name + " Health: " + monster.health);
+				
+				System.out.println("Do you want to continue attacking?");
+				
+				readline = bufferRead.readLine();
+				
+               if (readline.equals("no") || readline.equals("N") || readline.equals("No")) {
+					
+				     	switch (cure) {
+				        	case 0:
+					        	System.out.println("Potion" + player.potion);
+						        player.health = player.health + (int) (Math.random() * 100);
+						        player.potion--;
+						    break;
+					        
+				        	default:
+						        System.out.println("No potions to use ;( ");
+						    break;
+					}
+               }
+			}
+				
+				if (monster.health <= 0 || player.health <= 0) {
+						end = true;
+
+						
+			}
+			}
+		}
+
+	void attack(int patt,int php,int par,int matt,int mhp, int mar) {
+		
+		System.out.println("Attacking!");
+		
+		int mhpb = mhp;
+		
+		Player player = new Player();
+		
+		player.attack = (int) (Math.random() * 100);
+		
+		Monster monster = new Monster();
+		
+		monster.attack = (int) (Math.random() * 100);
+		
+		patt = player.attack;
+		matt = monster.attack;
+		
+		par = player.armor;
+		mar = player.armor;
+		
+		mhp = mhp - (patt - mar);
+		
+		wait(6);
+		
+		System.out.println("You hit him for " + (mhpb - mhp) + "HP");
+		
+		if (mhp <= 0) {
+			System.out.println("The monster is dead!");
+		}
+		else {
+			System.out.println("The monster attacks back!");
+			wait(6);
+			int phpb = php;
+			php = php - (matt - par);
+			System.out.println("He hits you for " + (phpb - php) + "HP");
+			wait(6);
+			if (php <= 0) {
+				System.out.println("You are dead!");
+			}
+		}
+		rphp = php;
+		rmhp = mhp;
+
+	}
+	public int getPhp() {
+		return rphp;
+	}
+	public int getMhp() {
+		return rmhp;
+	}
+
+
+
+}
