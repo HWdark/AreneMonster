@@ -1,0 +1,74 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Scanner;
+
+public class ArenaMonster {
+
+  public static void main(String[] args) throws IOException{
+		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+		String readline;
+
+		Scanner w = new Scanner(System.in);
+
+		GameMethods Gamemethods = new GameMethods();
+
+		Player player = new Player();
+		player.health = player.min + (int) (Math.random() * player.max);
+		//player.attack = (int) (Math.random() * 100);
+		player.armor = player.mina + (int) (Math.random() * 100);
+		player.potion = player.minp + (int) (Math.random() * 9);
+
+		Monster monster = new Monster();
+		monster.health = monster.min + (int) (Math.random() * monster.max);
+		//monster.attack = (int) (Math.random() * 100);
+		monster.armor = monster.mina + (int) (Math.random() * 100);
+		monster.potion = monster.minp + (int) (Math.random() * 9);
+		
+	
+		System.out.println("Start Screen");
+		System.out.println("");
+		System.out.println("1. Start temp battle test");
+		System.out.println("2. Exit");
+		
+		System.out.println("*** Weapons: [0 - Gloves] - [1 - Dagger] - [2 - Sword] - [3 - Axe]");
+		System.out.println("*** Weapons: [4 - Claymore] - [5 - Spear] - [6 - Crossbow] - [7 - Sickle]");
+		System.out.println("*** Weapons: [8 - ???????] - [9 - !!!!!]");
+		
+		System.out.println("Obs: Select weapon between 0 and 9;");
+		System.out.println("Obs: To battle you need to put yes, Yes or Y");
+
+		readline = in.readLine();
+
+		if (readline.equals("1")) {
+
+			System.out.print("Player 1 name: \t");
+			player.name = in.readLine();
+			System.out.print("Player 1 weapon: \t");
+			player.weapon = w.nextInt();
+			System.out.println("");
+			System.out.print("Player 2 name: \t");
+			monster.name = in.readLine();
+			System.out.print("Player 2 weapon: \t");
+			monster.weapon = w.nextInt();
+
+			System.out.println("");
+			System.out.println("Hello " + player.name);
+			System.out.println("");
+			System.out.println("Hello " + monster.name);
+			System.out.println("");
+			System.out.println("Are you ready to enter the battle?");
+
+			readline = in.readLine();
+
+			if(readline.equals("yes")||readline.equals("Yes")||readline.equals("y")) {
+				Gamemethods.Battle(player, monster);
+			}
+
+		}
+
+
+
+
+	}
+}
