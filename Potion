@@ -1,0 +1,28 @@
+class Potion {
+  
+	int cure;
+	Player player = new Player();
+	Monster monster = new Monster();
+	
+	{
+	switch (cure) {
+	
+	case 0:
+    	System.out.println("Potion" + player.potion);
+        player.health = player.health + (int) (Math.random() * 100);
+        player.potion--;
+    break;
+	
+	case 1:
+    	System.out.println("Potion" + monster.potion);
+        monster.health = monster.health + (int) (Math.random() * 100);
+        monster.potion--;
+    break;
+	
+	default:
+        System.out.println("No potions to use ;( ");
+    break;
+
+	}
+}
+}
